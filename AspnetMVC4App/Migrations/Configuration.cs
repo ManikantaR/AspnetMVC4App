@@ -1,6 +1,8 @@
 namespace OdeToCodeApp.Migrations
 {
+    using AspnetMVC4App.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -14,18 +16,20 @@ namespace OdeToCodeApp.Migrations
 
         protected override void Seed(AspnetMVC4App.Models.MVC4AppDb context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Restaurants.AddOrUpdate(r => r.Name,
+              new Restaurant { Name = "Costco", City = "Manchestor", Country = "Usa" },
+              new Restaurant { Name = "Bjs", City = "Manchestor", Country = "Usa" },
+              new Restaurant { Name = "Walmart", City = "Manchestor", Country = "Usa" },
+              new Restaurant
+              {
+                  Name = "Natiya",
+                  City = "Manchestor",
+                  Country = "Usa",
+                  Reviews = new List<RestaurantReview> {
+                    new RestaurantReview{Rating=9,Body="Super",ReviewerName="mani" } }
+              }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+          );
         }
     }
 }

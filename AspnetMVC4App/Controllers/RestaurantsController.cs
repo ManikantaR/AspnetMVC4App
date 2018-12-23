@@ -15,8 +15,9 @@ namespace AspnetMVC4App.Controllers
         private MVC4AppDb db = new MVC4AppDb();
 
         // GET: Restaurants
-        public ActionResult Index()
+        public ActionResult Index(string searchName)
         {
+          
             return View(db.Restaurants.ToList());
         }
 

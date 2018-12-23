@@ -107,7 +107,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OdeToCodeApp\AspnetMVC4App.csproj">
+    <ProjectReference Include="..\AspnetMVC4App\AspnetMVC4App.csproj">
       <Project>{1DD6139F-C518-4AB9-BA5F-FBA5035F8CD8}</Project>
       <Name>AspnetMVC4App</Name>
     </ProjectReference>

@@ -15,9 +15,14 @@ namespace AspnetMVC4App.Controllers
         private MVC4AppDb db = new MVC4AppDb();
 
         // GET: Reviews
-        public ActionResult Index()
+        public ActionResult Index([Bind(Prefix ="id")]int restaurantId )
         {
-            return View(db.ReviewViewModels.ToList());
+            var restaurant = db.Restaurants.Find(restaurantId);
+            if (restaurant != null)
+            {
+                return View(restaurant);
+            }
+            return HttpNotFound();
         }
 
         // GET: Reviews/Details/5
@@ -27,7 +32,7 @@ namespace AspnetMVC4App.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReviewViewModel reviewViewModel = db.ReviewViewModels.Find(id);
+            RestaurantReview reviewViewModel = db.RestaurantReviews.Find(id);
             if (reviewViewModel == null)
             {
                 return HttpNotFound();
@@ -36,7 +41,7 @@ namespace AspnetMVC4App.Controllers
         }
 
         // GET: Reviews/Create
-        public ActionResult Create()
+        public ActionResult Create(int restaurantId)
         {
             return View();
         }
@@ -46,13 +51,13 @@ namespace AspnetMVC4App.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,City,Country,CountOfReviews")] ReviewViewModel reviewViewModel)
+        public ActionResult Create( RestaurantReview reviewViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.ReviewViewModels.Add(reviewViewModel);
+                db.RestaurantReviews.Add(reviewViewModel);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new { id = reviewViewModel.RestaurantId });
             }
 
             return View(reviewViewModel);
@@ -65,7 +70,7 @@ namespace AspnetMVC4App.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReviewViewModel reviewViewModel = db.ReviewViewModels.Find(id);
+            RestaurantReview reviewViewModel = db.RestaurantReviews.Find(id);
             if (reviewViewModel == null)
             {
                 return HttpNotFound();
@@ -78,13 +83,13 @@ namespace AspnetMVC4App.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,City,Country,CountOfReviews")] ReviewViewModel reviewViewModel)
+        public ActionResult Edit(RestaurantReview reviewViewModel)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(reviewViewModel).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = reviewViewModel.RestaurantId });
             }
             return View(reviewViewModel);
         }
@@ -96,7 +101,7 @@ namespace AspnetMVC4App.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReviewViewModel reviewViewModel = db.ReviewViewModels.Find(id);
+            RestaurantReview reviewViewModel = db.RestaurantReviews.Find(id);
             if (reviewViewModel == null)
             {
                 return HttpNotFound();
@@ -109,8 +114,8 @@ namespace AspnetMVC4App.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ReviewViewModel reviewViewModel = db.ReviewViewModels.Find(id);
-            db.ReviewViewModels.Remove(reviewViewModel);
+            RestaurantReview reviewViewModel = db.RestaurantReviews.Find(id);
+            db.RestaurantReviews.Remove(reviewViewModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

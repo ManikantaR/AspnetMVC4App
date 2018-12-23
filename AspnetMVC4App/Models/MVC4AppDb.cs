@@ -18,7 +18,8 @@ namespace AspnetMVC4App.Models
 
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<RestaurantReview> RestaurantReviews { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
-        public System.Data.Entity.DbSet<AspnetMVC4App.Models.ReviewViewModel> ReviewViewModels { get; set; }
+
     }
 }
