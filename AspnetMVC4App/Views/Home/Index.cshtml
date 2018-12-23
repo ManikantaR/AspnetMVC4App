@@ -1,0 +1,21 @@
+﻿@model IEnumerable<AspnetMVC4App.Models.ReviewViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<form action="/" method="get">
+    <input type="text" name="searchByName" value="" />
+    <input type="submit" name="search" value="Searcg=h By Name" />   
+</form>
+
+
+@foreach(var item in Model)
+{
+<div>
+    <h4>@item.Name</h4>
+    <div>@item.City, @item.Country </div>
+    <div>Reviews : @item.CountOfReviews</div>
+    <hr /> 
+
+</div>
+}
