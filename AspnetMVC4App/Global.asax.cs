@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AspnetMVC4App.Migrations;
+using OdeToCodeApp.Migrations;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +16,8 @@ namespace AspnetMVC4App
     {
         protected void Application_Start()
         {
+            var migration = new DbMigrator(new Configuration());
+            migration.Update();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

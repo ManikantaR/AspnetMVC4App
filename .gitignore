@@ -5,6 +5,7 @@
 *.class
 *.dll
 .vs/
+release/
 *.exe
 *.pdb
 *.dll.config

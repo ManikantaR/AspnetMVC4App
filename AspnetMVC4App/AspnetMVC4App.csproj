@@ -139,9 +139,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812190440031_InitialCreate.cs" />
-    <Compile Include="Migrations\201812190440031_InitialCreate.Designer.cs">
-      <DependentUpon>201812190440031_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201812240218509_InitialCreate.cs" />
+    <Compile Include="Migrations\201812240218509_InitialCreate.Designer.cs">
+      <DependentUpon>201812240218509_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\MVC4AppDb.cs" />
@@ -163,6 +163,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\AspnetMvc4Release.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -224,8 +225,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812190440031_InitialCreate.resx">
-      <DependentUpon>201812190440031_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812240218509_InitialCreate.resx">
+      <DependentUpon>201812240218509_InitialCreate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

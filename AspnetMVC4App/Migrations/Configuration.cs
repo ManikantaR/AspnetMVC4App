@@ -1,4 +1,4 @@
-namespace OdeToCodeApp.Migrations
+namespace AspnetMVC4App.Migrations
 {
     using AspnetMVC4App.Models;
     using System;
